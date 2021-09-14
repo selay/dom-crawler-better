@@ -1039,7 +1039,7 @@ class Crawler implements \Countable, \IteratorAggregate
         $crawler = $this->createSubCrawler(null);
 //nimle
         foreach ($this->nodes as $node) {
-            if ($node->ownerDocument instanceof \DOMElement){
+            if (isset($node->ownerDocument)&&$node->ownerDocument instanceof \DOMDocument){
                 $domxpath = $this->createDOMXPath($node->ownerDocument, $prefixes);
                 $crawler->add($domxpath->query($xpath, $node));
             }
